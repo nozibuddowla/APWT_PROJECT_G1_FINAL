@@ -29,10 +29,14 @@ class UsersController extends Controller
         
         if($user){
             $req->session()->put('profile',$user);
-            if($user->role =='HotelManager'){
+            if($user->role =='admin'){
                 return redirect()->route('users.admin.home');
-            }else{
+            }
+            if($user->role =='hotelManager'){
                 return redirect()->route('products.employee.home');
+            }
+            else{
+                echo "something wrong";
             }
         }
         else{
@@ -45,6 +49,7 @@ class UsersController extends Controller
     public function adminHome()
     {   $allUsers=Users::all();
         return view('users.adminHome')->with('allUsers',$allUsers);
+       // return view('products.employeeHome')->with('allProducts',$allProducts);
     }
 
     /**

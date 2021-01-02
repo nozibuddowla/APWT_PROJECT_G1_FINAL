@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class='container'>
-      <h3 class='text-primary mt-5 mb-3 text-center'>Job Portal</h3>
+      <h3 class='text-primary mt-5 mb-3 text-center'>TravelBliss</h3>
       <h5>Login</h5>
 
       @if(count($errors)>0)

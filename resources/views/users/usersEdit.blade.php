@@ -60,8 +60,9 @@
       <div class="form-group">
         <label for="">role</label>
         <select class="form-control" name="role">
-          <option {{ $role == 'employee' ? "selected" : "" }} value="employee">Employee</option>
-          <option {{ $role == 'admin' ? "selected" : "" }} value="admin">Admin</option>
+          <option {{ $role == 'hotelManager' ? "selected" : "" }} value="hotelManager">Hotel Manager</option>
+          <option {{ $role == 'user' ? "selected" : "" }} value="user">User</option>
+          <option {{ $role == 'travelManager' ? "selected" : "" }} value="travelManager">Travel Manager</option>
         </select>
       </div>
       <div class="form-group">

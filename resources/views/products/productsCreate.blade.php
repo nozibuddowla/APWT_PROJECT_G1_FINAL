@@ -15,8 +15,8 @@
     
   <div class="container">
     
-    <h4 class="mt-5 mb-5 text-primary">Job Portal</h4>
-    <h5 class="mt-5 mb-5">Post Job</h5>
+    <h4 class="mt-5 mb-5 text-primary">TravelBliss</h4>
+    <h5 class="mt-5 mb-5">Post Room</h5>
 
     <div class="float-right h6">
       <a href="/employeeHome" class="text-primary">
@@ -43,20 +43,34 @@
     <form method="POST">
     @csrf
       <div class="form-group">
-        <label for="name"> company name</label>
-        <input type="" class="form-control" id="name" name="name" value="{{old('name')}}">
+        <label for="post_title"> Post Title</label>
+        <input type="" class="form-control" id="name" name="postTitle" value="{{old('postTitle')}}">
       </div>
       <div class="form-group">
-        <label for="quantity">job title</label>
-        <input class="form-control" id="jobtitle" name="jobtitle" value="{{old('jobtitle')}}">
+        <label for="room_name">Room Name</label>
+        <input class="form-control" id="jobtitle" name="roomName" value="{{old('roomName')}}">
       </div>
       <div class="form-group">
-        <label for="price">Job location</label>
-        <input class="form-control" id="price" name="jlocation" value="{{old('jlocation')}}">
+        <label for="room_price">Room Price</label>
+        <input class="form-control" id="price" name="roomPrice" value="{{old('roomPrice')}}">
       </div>
+
       <div class="form-group">
-        <label for="price">Salary</label>
-        <input class="form-control" id="salary" name="salary" value="{{old('salary')}}">
+        <label for="room_type">Room Type</label>
+        <input class="form-control" id="price" name="roomType" value="{{old('roomType')}}">
+      </div>
+      
+      <!-- <div class="form-group">
+        <label for="room_type">room type</label>
+        <select class="form-control" name="roomType">
+          <option selected value="single">Single</option>
+          <option {{ old('role') == 'double' ? "selected" : "" }} value="double">Double</option>
+        </select>
+      </div> -->
+      
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input class="form-control" id="salary" name="description" value="{{old('description')}}">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>

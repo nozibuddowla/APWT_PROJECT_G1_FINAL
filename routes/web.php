@@ -20,18 +20,27 @@ Route::get('/logout', 'LogoutController@index');
 
 Route::group(['middleware'=>['profile']], function(){
     Route::get('/adminHome', 'UsersController@adminHome')->name('users.admin.home');
+
     Route::get('/usersCreate', 'UsersController@create')->name('users.admin.create');
     Route::post('/usersCreate', 'UsersController@store')->name('users.admin.create');
+
     Route::get('/userAdminEdit/{id}', 'UsersController@edit')->name('users.admin.edit');
     Route::post('/userAdminEdit/{id}', 'UsersController@update')->name('users.admin.edit');
+
     Route::get('/userAdminDelete/{id}', 'UsersController@destroy')->name('users.admin.delete');
+
     Route::get('/userAdminSearch', 'UsersController@search')->name('users.admin.search');
 
     
     Route::get('/employeeHome', 'ProductsController@employeeHome')->name('products.employee.home');
+
     Route::get('/productsCreate', 'ProductsController@create')->name('products.employee.create');
     Route::post('/productsCreate', 'ProductsController@store')->name('products.employee.create');
+
     Route::get('/productEmployeeEdit/{id}', 'ProductsController@edit')->name('products.employee.edit');
     Route::post('/productEmployeeEdit/{id}', 'ProductsController@update')->name('products.employee.edit');
+
     Route::get('/productEmployeeDelete/{id}', 'ProductsController@destroy')->name('products.employee.delete');
+
+    Route::get('/productAdminSearch', 'ProductsController@search')->name('products.admin.search');
 });

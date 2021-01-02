@@ -14,7 +14,7 @@
   <body>
     
   <div class="container mt-5">
-    <h4 class="mt-5 text-primary">Hotel Manager</h4>
+    <h4 class="mt-5 text-primary">Admin</h4>
     <h4 class="mb-5 d-inline">Welcome, {{session('profile.name')}} </h4>
     
     <div class="float-right h6">
@@ -39,7 +39,7 @@
 
 
     <h5 class="mt-5"></h5>
-    <a href="{{route('users.admin.create')}}"><i class="fa fa-user h3" aria-hidden="true"></i>Post New Room</a>
+    <a href="{{route('users.admin.create')}}"><i class="fa fa-user h3" aria-hidden="true"></i>Add new account</a>
     <input id="searchKey" name="searchKey" class="form-control col-3 float-right mt-0 mb-3" type="text" placeholder="Search by name">
     <table class="table table-hover">
       <thead class="thead-dark">

@@ -15,7 +15,7 @@
     
   <div class="container">
     
-    <h4 class="mt-5 mb-5 text-primary">Job Portal</h4>
+    <h4 class="mt-5 mb-5 text-primary">TravelBliss</h4>
     <h5 class="mt-5 mb-5">Registration</h5>
 
     <div class="float-right h6">
@@ -42,30 +42,31 @@
     <form method="POST">
     @csrf
       <div class="form-group">
-        <label for="name">name</label>
+        <label for="name">Name</label>
         <input type="" class="form-control" id="name" name="name" value="{{old('name')}}">
       </div>
       <div class="form-group">
-        <label for="name">company name</label>
+        <label for="name">Company Name</label>
         <input type="" class="form-control" id="companyName" name="companyName" value="{{old('companyName')}}">
       </div>
       <div class="form-group">
-        <label for="name">username</label>
+        <label for="name">Username</label>
         <input type="" class="form-control" id="username" name="username" value="{{old('username')}}">
       </div>
       <div class="form-group">
-        <label for="contactno">contact no</label>
+        <label for="contactno">Contact No</label>
         <input class="form-control" id="contactno" name="contactno" value="{{old('contactno')}}">
       </div>
       <div class="form-group">
         <label for="">role</label>
         <select class="form-control" name="role">
-          <option selected value="employee">Employee</option>
-          <option {{ old('role') == 'admin' ? "selected" : "" }} value="admin">Admin</option>
+          <option selected value="hotelManager">Hotel Manager</option>
+          <option {{ old('role') == 'user' ? "selected" : "" }} value="user">User</option>
+          <option {{ old('role') == 'travelManager' ? "selected" : "" }} value="travelManager">Travel Manager</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">password</label>
+        <label for="exampleInputPassword1">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1" name="password" value="{{old('password')}}">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>

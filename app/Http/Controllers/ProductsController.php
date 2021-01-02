@@ -36,20 +36,21 @@ class ProductsController extends Controller
     public function store(Request $req)
     {
         $req->validate([
-            'name' => 'required',
-            'jobtitle' => 'required',
-            'jlocation' => 'required',
-            'salary' => 'required',
+            'postTitle' => 'required',
+            'roomName' => 'required',
+            'roomPrice' => 'required',
+            'roomType' => 'required',
         ]);
 
         $product = new Products();
-        $product->name         = $req->name;
-        $product->jobtitle     = $req->jobtitle;
-        $product->jlocation     = $req->jlocation; 
-        $product->salary     = $req->salary;
+        $product->postTitle         = $req->postTitle;
+        $product->roomName     = $req->roomName;
+        $product->roomPrice    = $req->roomPrice;
+        $product->roomType       = $req->roomType;
+        $product->description       = $req->description;
         $product->save();
        
-        $req->session()->flash('msg','Job added successfully.');
+        $req->session()->flash('msg','Post added successfully.');
         $req->session()->flash('type','success');            
         return redirect()->route('products.employee.home');
     }
@@ -76,20 +77,21 @@ class ProductsController extends Controller
     public function update(Request $req, $id)
     {
         $req->validate([
-            'name' => 'required',
-            'jobtitle' => 'required',
-            'jlocation' => 'jlocation',
-            'salary' => 'required'
+            'postTitle' => 'required',
+            'roomName' => 'required',
+            'roomPrice' => 'required',
+            'roomType' => 'required',
         ]);
 
         $product = Products::find($id);
-        $product->name         = $req->name;
-        $product->jobtitle     = $req->jobtitle;
-        $product->jlocation    = $req->jlocation;
-        $product->salary       = $req->salary;
+        $product->postTitle         = $req->postTitle;
+        $product->roomName     = $req->roomName;
+        $product->roomPrice    = $req->roomPrice;
+        $product->roomType       = $req->roomType;
+        $product->description       = $req->description;
         $product->save();
 
-        $req->session()->flash('msg','Job updated successfully.');
+        $req->session()->flash('msg','Post updated successfully.');
         $req->session()->flash('type','success');            
         return redirect()->route('products.employee.home');
     }
@@ -103,8 +105,23 @@ class ProductsController extends Controller
     public function destroy($id, Request $req)
     {
         Products::find($id)->delete();
-        $req->session()->flash('msg','Job deleted successfully.');
+        $req->session()->flash('msg','Post deleted successfully.');
         $req->session()->flash('type','success');            
         return redirect()->route('products.employee.home');
+    }
+
+       /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Products  $users
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $req)
+    {   $key = $req->get('key');
+        if($req->ajax()){
+            $allProducts=Products::where('postTitle','like', '%'.$key.'%')->get();
+
+            echo json_encode($allProducts);    
+        }
     }
 }

@@ -14,7 +14,7 @@
   <body>
     
   <div class="container mt-5">
-    <h4 class="mt-5 text-primary">Employee</h4>
+    <h4 class="mt-5 text-primary">Hotel Manager</h4>
     <h4 class="mb-5 d-inline">Welcome, {{session('profile.name')}} </h4>
     
     <div class="float-right h6">
@@ -39,24 +39,27 @@
 
 
     <h5 class="mt-5"></h5>
-    <a href="{{route('products.employee.create')}}"><i class="fa fa-briefcase h3" aria-hidden="true"></i>Post new job</a>
+    <a href="{{route('products.employee.create')}}"><i class="fa fa-briefcase h3" aria-hidden="true"></i>Post new room</a>
+    <input id="searchKey" name="searchKey" class="form-control col-3 float-right mt-0 mb-3" type="text" placeholder="Search by name">
     <table class="table table-hover">
       <thead class="thead-dark">
         <tr>
           <th scope="col">id</th>
-          <th scope="col">Company name</th>
-          <th scope="col">Job Title</th>
-          <th scope="col">Job Location</th> 
-          <th scope="col">Salary</th>           
+          <th scope="col">Post Title</th>
+          <th scope="col">Room Name</th>
+          <th scope="col">Room Price</th> 
+          <th scope="col">Room Type</th>
+          <th scope="col">Description</th>              
           <th scope="col">Action</th>          
         </tr>
       </thead>
-      <tbody id='table-body'>
+      <!-- <tbody id='table-body'>
         @for($i=0; $i< count($allProducts); $i++)
         <tr>
           <td>{{$allProducts[$i]['id']}}</td>
           <td>{{$allProducts[$i]['name']}}</td>
           <td>{{$allProducts[$i]['jobtitle']}}</td>
+          <td>{{$allProducts[$i]['jlocation']}}</td>
           <td>{{$allProducts[$i]['jlocation']}}</td>
           <td>{{$allProducts[$i]['salary']}}</td>
           <td colspan="2">
@@ -70,7 +73,30 @@
 
        
         
+      </tbody> -->
+
+      <tbody id='table-body'>
+        @for($i=0; $i< count($allProducts); $i++)
+        <tr>
+          <td>{{$allProducts[$i]['id']}}</td>
+          <td>{{$allProducts[$i]['postTitle']}}</td>
+          <td>{{$allProducts[$i]['roomName']}}</td>
+          <td>{{$allProducts[$i]['roomPrice']}}</td>
+          <td>{{$allProducts[$i]['roomType']}}</td>
+          <td>{{$allProducts[$i]['description']}}</td>
+          <td colspan="2">
+            <a href="{{route('products.employee.edit', $allProducts[$i]['id'])}}"><i class="fas fa-edit text-warning mr-3"></i></a> |
+            <a href="{{route('products.employee.delete', $allProducts[$i]['id'])}}"><i class="fas fa-trash-alt text-danger ml-3"></i></a>
+          </td>
+        </tr>
+        @endfor
+
+
+
+       
+        
       </tbody>
+      
     </table>
     
     
@@ -94,6 +120,46 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     -->
+
+      <!-- jquery -->
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!-- jquery -->
+
+    <script>
+      $(document).ready(()=>{
+        $('#searchKey').on('keyup',()=>{
+        var searchKey= $('#searchKey').val();
+        $.ajax({
+            method: 'GET',
+            url:"{{ route('products.admin.search') }}",
+            data: {key: searchKey},
+            dataType: 'json',
+            success:(res)=>{
+              var data='';
+              for(var i=0; i<res.length; i++){
+                data+= "<tr>"
+                  +"<td>"+res[i]['id']+"</td>"
+                  +"<td>"+res[i]['postTitle']+"</td>"
+                  +"<td>"+res[i]['roomName']+"</td>"
+                  +"<td>"+res[i]['roomPrice']+"</td>"
+                  +"<td>"+res[i]['roomType']+"</td>"
+                  +"<td>"+res[i]['description']+"</td>"
+                  +"<td colspan='2'>"
+                    +"<a href='/productEmployeeEdit/"+res[i]['id']+"'><i class='fas fa-edit text-warning mr-3'></i></a> |"
+                    +"<a href='/productEmployeeDelete/"+res[i]['id']+"'><i class='fas fa-trash-alt text-danger ml-3'></i></a>"
+                  +'</td>'
+                +'</tr>';
+              }
+              $('#table-body').html(data);
+            },
+            error:(res)=>{alert('Error serching!!!!!!!!');}
+          });
+        });
+      });
+    </script>
+
     
+
+
     </body>
 </html>

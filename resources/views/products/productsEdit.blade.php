@@ -42,20 +42,24 @@
     <form method="POST">
     @csrf
       <div class="form-group">
-        <label for="name">Company Name</label>
-        <input type="" class="form-control" id="name" name="name" value="{{$name}}">
+        <label for="name">Post Title</label>
+        <input type="" class="form-control" id="name" name="postTitle" value="{{$postTitle}}">
       </div>
       <div class="form-group">
-        <label for="quantity">Job Title</label>
-        <input type="" class="form-control" id="jobtitle" name="jobtitle" value="{{$jobtitle}}">
+        <label for="quantity">Room Name</label>
+        <input type="" class="form-control" id="jobtitle" name="roomName" value="{{$roomName}}">
       </div>
       <div class="form-group">
-        <label for="price">Job Location</label>
-        <input class="form-control" id="jlocation" name="jlocation" value="{{$jlocation}}">
+        <label for="price">Room Price</label>
+        <input class="form-control" id="jlocation" name="roomPrice" value="{{$roomPrice}}">
       </div>
       <div class="form-group">
-        <label for="price">Salary</label>
-        <input class="form-control" id="salary" name="salary" value="{{$salary}}">
+        <label for="price">Room Type</label>
+        <input class="form-control" id="salary" name="roomType" value="{{$roomType}}">
+      </div>
+      <div class="form-group">
+        <label for="price">Description</label>
+        <input class="form-control" id="salary" name="description" value="{{$description}}">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
