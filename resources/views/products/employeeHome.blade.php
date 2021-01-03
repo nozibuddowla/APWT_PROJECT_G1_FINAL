@@ -39,10 +39,33 @@
 	@endif
 
 
+
+
     <h5 class="mt-5"></h5>
-    <a href="{{route('products.employee.create')}}"><i class="fa fa-briefcase h3" aria-hidden="true"></i>Post new room</a>
-    <a href="/pdf"><i class="fa fa-briefcase h3" aria-hidden="true"></i>Invoice</a>
-    <input id="searchKey" name="searchKey" class="form-control col-3 float-right mt-0 mb-3" type="text" placeholder="Search by name">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    
+      <li class="nav-item active">
+        <a class="nav-link" href="{{route('products.employee.create')}}">Post new room <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/pdf">Invoice</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input id="searchKey" name="searchKey" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" placeholder="Search by name">
+      <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+    </form>
+  </div>
+</nav>
+
+
+    <!-- <a href="{{route('products.employee.create')}}"><i class="fa fa-briefcase h3" aria-hidden="true"></i>Post new room</a>
+    <a href="/pdf"><i class="fa fa-briefcase h3" aria-hidden="true"></i>Invoice</a> -->
+    <!-- <input id="searchKey" name="searchKey" class="form-control col-3 float-right mt-0 mb-3" type="text" placeholder="Search by name"> -->
     <table class="table table-hover">
       <thead class="thead-dark">
         <tr>
