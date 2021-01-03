@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2020 at 08:49 AM
+-- Generation Time: Jan 03, 2021 at 09:56 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -19,8 +19,34 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `jobportal`
+-- Database: `travelbliss`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(100) NOT NULL,
+  `postTitle` varchar(100) NOT NULL,
+  `roomName` varchar(100) NOT NULL,
+  `roomPrice` int(100) NOT NULL,
+  `roomType` varchar(100) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `tag` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `postTitle`, `roomName`, `roomPrice`, `roomType`, `description`, `tag`) VALUES
+(2, 'fkkk neil', 'test2', 1000, 'test2', 'test2', 'neil'),
+(3, 'sdf', 'sdf-k', 100, 'sdf', 'sdf', '123'),
+(4, 'klj', 'kjljk', 1000, 'lkl', 'kl', 'neil'),
+(5, 'd', 'd', 1, 'd', 'd', '123');
 
 -- --------------------------------------------------------
 
@@ -67,13 +93,21 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `companyName`, `contactno`, `username`, `password`, `role`) VALUES
-(1, 'Abc', 'test', '1234567890', 'admin', '123', 'admin'),
-(2, 'Xyz', 'kkk', '12345', 'xyz', '123', 'employee'),
-(22, 'test2', 'test2', '015555555', 'test2', 'test', 'employee');
+(1, 'Fardin Ahmed Niloy', 'Family Travel', '01781850000', 'neil', '123', 'hotelManager'),
+(2, 'Xyz', 'kkk', '0000', 'admin', '123', 'admin'),
+(22, 'test2', 'test2', '015555555', 'test4', 'test', 'user'),
+(23, 'dfsdf', 'sdf', '1000', '123', '123', 'hotelManager'),
+(24, 'test3', 'test3', '0000', 'test3', '123', 'hotelManager');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `products`
@@ -92,16 +126,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
