@@ -13,7 +13,7 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function employeeHome()
-    {   $ptag = session('profile.username');;
+    {   $ptag = session('profile.username');
         $allProducts=Products::where('tag',$ptag)->get();
         return view('products.employeeHome')->with('allProducts',$allProducts);
     }
@@ -119,9 +119,10 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function search(Request $req)
-    {   $key = $req->get('key');
+    {   $ptag = session('profile.username');
+        $key = $req->get('key');
         if($req->ajax()){
-            $allProducts=Products::where('postTitle','like', '%'.$key.'%')->get();
+            $allProducts=Products::where('postTitle','like', '%'.$key.'%')->where('tag', $ptag)->get();
 
             echo json_encode($allProducts);    
         }

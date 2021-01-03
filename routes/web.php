@@ -20,6 +20,8 @@ Route::get('/logout', 'LogoutController@index');
 
 Route::get('/pdf', 'PDF\TestPDF@generate');
 
+Route::get('/micro','MicroController@microServe');
+
 Route::group(['middleware'=>['profile']], function(){
     Route::get('/adminHome', 'UsersController@adminHome')->name('users.admin.home');
 
