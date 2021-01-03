@@ -13,7 +13,8 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function employeeHome()
-    {   $allProducts=Products::all();
+    {   $ptag = session('profile.username');;
+        $allProducts=Products::where('tag',$ptag)->get();
         return view('products.employeeHome')->with('allProducts',$allProducts);
     }
 
@@ -48,6 +49,7 @@ class ProductsController extends Controller
         $product->roomPrice    = $req->roomPrice;
         $product->roomType       = $req->roomType;
         $product->description       = $req->description;
+        $product->tag       = $req->tag;
         $product->save();
        
         $req->session()->flash('msg','Post added successfully.');

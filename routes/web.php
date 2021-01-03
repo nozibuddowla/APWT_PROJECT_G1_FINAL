@@ -18,6 +18,8 @@ Route::get('/login', 'UsersController@login');
 Route::post('/login', 'UsersController@verifyLogin');
 Route::get('/logout', 'LogoutController@index');
 
+Route::get('/pdf', 'PDF\TestPDF@generate');
+
 Route::group(['middleware'=>['profile']], function(){
     Route::get('/adminHome', 'UsersController@adminHome')->name('users.admin.home');
 

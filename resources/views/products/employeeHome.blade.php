@@ -16,6 +16,7 @@
   <div class="container mt-5">
     <h4 class="mt-5 text-primary">Hotel Manager</h4>
     <h4 class="mb-5 d-inline">Welcome, {{session('profile.name')}} </h4>
+  
     
     <div class="float-right h6">
       <a href="/logout" class="text-danger">
@@ -40,6 +41,7 @@
 
     <h5 class="mt-5"></h5>
     <a href="{{route('products.employee.create')}}"><i class="fa fa-briefcase h3" aria-hidden="true"></i>Post new room</a>
+    <a href="/pdf"><i class="fa fa-briefcase h3" aria-hidden="true"></i>Invoice</a>
     <input id="searchKey" name="searchKey" class="form-control col-3 float-right mt-0 mb-3" type="text" placeholder="Search by name">
     <table class="table table-hover">
       <thead class="thead-dark">
@@ -49,7 +51,8 @@
           <th scope="col">Room Name</th>
           <th scope="col">Room Price</th> 
           <th scope="col">Room Type</th>
-          <th scope="col">Description</th>              
+          <th scope="col">Description</th>
+         <!-- <th scope="col">tag</th>           -->
           <th scope="col">Action</th>          
         </tr>
       </thead>
@@ -71,7 +74,7 @@
 
 
 
-       
+            
         
       </tbody> -->
 
@@ -84,6 +87,7 @@
           <td>{{$allProducts[$i]['roomPrice']}}</td>
           <td>{{$allProducts[$i]['roomType']}}</td>
           <td>{{$allProducts[$i]['description']}}</td>
+          <!-- <td>{{$allProducts[$i]['tag']}}</td> -->
           <td colspan="2">
             <a href="{{route('products.employee.edit', $allProducts[$i]['id'])}}"><i class="fas fa-edit text-warning mr-3"></i></a> |
             <a href="{{route('products.employee.delete', $allProducts[$i]['id'])}}"><i class="fas fa-trash-alt text-danger ml-3"></i></a>

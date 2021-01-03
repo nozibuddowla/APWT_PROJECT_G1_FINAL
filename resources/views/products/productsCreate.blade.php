@@ -16,7 +16,7 @@
   <div class="container">
     
     <h4 class="mt-5 mb-5 text-primary">TravelBliss</h4>
-    <h5 class="mt-5 mb-5">Post Room</h5>
+    <h5 class="mt-5 mb-5">Post Room </h5>
 
     <div class="float-right h6">
       <a href="/employeeHome" class="text-primary">
@@ -44,20 +44,20 @@
     @csrf
       <div class="form-group">
         <label for="post_title"> Post Title</label>
-        <input type="" class="form-control" id="name" name="postTitle" value="{{old('postTitle')}}">
+        <input type="" class="form-control" id="postTitle" name="postTitle" value="{{old('postTitle')}}">
       </div>
       <div class="form-group">
         <label for="room_name">Room Name</label>
-        <input class="form-control" id="jobtitle" name="roomName" value="{{old('roomName')}}">
+        <input class="form-control" id="roomName" name="roomName" value="{{old('roomName')}}">
       </div>
       <div class="form-group">
         <label for="room_price">Room Price</label>
-        <input class="form-control" id="price" name="roomPrice" value="{{old('roomPrice')}}">
+        <input class="form-control" id="roomPrice" name="roomPrice" value="{{old('roomPrice')}}">
       </div>
 
       <div class="form-group">
         <label for="room_type">Room Type</label>
-        <input class="form-control" id="price" name="roomType" value="{{old('roomType')}}">
+        <input class="form-control" id="roomType" name="roomType" value="{{old('roomType')}}">
       </div>
       
       <!-- <div class="form-group">
@@ -70,7 +70,11 @@
       
       <div class="form-group">
         <label for="description">Description</label>
-        <input class="form-control" id="salary" name="description" value="{{old('description')}}">
+        <input class="form-control" id="description" name="description" value="{{old('description')}}">
+      </div>
+      <div class="form-group">
+        <label for="tag"></label>
+        <input type="hidden" class="form-control" id="tag" name="tag" value='{{session("profile.username")}} '>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
