@@ -13,7 +13,7 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function employeeHome()
-    {   $ptag = session('profile.username');
+    {   $ptag = session('profile.login');
         $allProducts=Products::where('tag',$ptag)->get();
         return view('products.employeeHome')->with('allProducts',$allProducts);
     }
@@ -50,6 +50,7 @@ class ProductsController extends Controller
         $product->roomType       = $req->roomType;
         $product->description       = $req->description;
         $product->tag       = $req->tag;
+        $product->avail       = $req->avail;
         $product->save();
        
         $req->session()->flash('msg','Post added successfully.');
@@ -91,6 +92,7 @@ class ProductsController extends Controller
         $product->roomPrice    = $req->roomPrice;
         $product->roomType       = $req->roomType;
         $product->description       = $req->description;
+        $product->avail       = $req->avail;
         $product->save();
 
         $req->session()->flash('msg','Post updated successfully.');
@@ -119,7 +121,7 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function search(Request $req)
-    {   $ptag = session('profile.username');
+    {   $ptag = session('profile.login');
         $key = $req->get('key');
         if($req->ajax()){
             $allProducts=Products::where('postTitle','like', '%'.$key.'%')->where('tag', $ptag)->get();

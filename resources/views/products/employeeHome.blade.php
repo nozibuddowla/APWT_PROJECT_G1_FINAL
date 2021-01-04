@@ -17,6 +17,7 @@
     <h4 class="mt-5 text-primary">Hotel Manager | Home</h4>
     <h4 class="mb-5 d-inline">Welcome, {{session('profile.name')}} </h4>
   
+ 
     
     <div class="float-right h6">
       <a href="/logout" class="text-danger">
@@ -79,31 +80,10 @@
           <th scope="col">Room Price</th> 
           <th scope="col">Room Type</th>
           <th scope="col">Description</th>
-         <!-- <th scope="col">tag</th>           -->
+         <th scope="col">Available</th>          
           <th scope="col">Action</th>          
         </tr>
       </thead>
-      <!-- <tbody id='table-body'>
-        @for($i=0; $i< count($allProducts); $i++)
-        <tr>
-          <td>{{$allProducts[$i]['id']}}</td>
-          <td>{{$allProducts[$i]['name']}}</td>
-          <td>{{$allProducts[$i]['jobtitle']}}</td>
-          <td>{{$allProducts[$i]['jlocation']}}</td>
-          <td>{{$allProducts[$i]['jlocation']}}</td>
-          <td>{{$allProducts[$i]['salary']}}</td>
-          <td colspan="2">
-            <a href="{{route('products.employee.edit', $allProducts[$i]['id'])}}"><i class="fas fa-edit text-warning mr-3"></i></a> |
-            <a href="{{route('products.employee.delete', $allProducts[$i]['id'])}}"><i class="fas fa-trash-alt text-danger ml-3"></i></a>
-          </td>
-        </tr>
-        @endfor
-
-
-
-            
-        
-      </tbody> -->
 
       <tbody id='table-body'>
         @for($i=0; $i< count($allProducts); $i++)
@@ -114,10 +94,17 @@
           <td>{{$allProducts[$i]['roomPrice']}}</td>
           <td>{{$allProducts[$i]['roomType']}}</td>
           <td>{{$allProducts[$i]['description']}}</td>
-          <!-- <td>{{$allProducts[$i]['tag']}}</td> -->
+          <td>{{$allProducts[$i]['avail']}}</td>
           <td colspan="2">
             <a href="{{route('products.employee.edit', $allProducts[$i]['id'])}}"><i class="fas fa-edit text-warning mr-3"></i></a> |
             <a href="{{route('products.employee.delete', $allProducts[$i]['id'])}}"><i class="fas fa-trash-alt text-danger ml-3"></i></a>
+           
+            @if($allProducts[$i]['avail'] =='available')         
+            <a class="btn btn-success" href="{{route('products.employee.edit', $allProducts[$i]['id'])}}">Book Room</a>        
+@else
+          
+@endif
+            
           </td>
         </tr>
         @endfor

@@ -34,4 +34,18 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
+    // 'github' => [
+    //     'client_id' => env("key: 'GITHUB_CLIENT_ID'"),
+    //     'client_secret' => env("key: 'GITHUB_CLIENT_SECRET'"),
+    //     'redirect' => env("key: 'GITHUB_REDIRECT_URL'"),
+    // ],
+
+       'github' => [
+        'client_id' => env('CLIENT_ID'),  
+        'client_secret' => env('CLIENT_SECRET'),
+        'redirect' => env('REDIRECT'),
+    ],
+
+    
+
 ];

@@ -1,86 +1,110 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <!-- font-awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <title>Post Job</title>
-  </head>
-  <body>
-    
-  <div class="container">
-    
-    <h4 class="mt-5 mb-5 text-primary">TravelBliss</h4>
-    <h5 class="mt-5 mb-5">Post Room </h5>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+    <title>Hotel Manager | Post Room</title>
+</head>
 
-    <div class="float-right h6">
-      <a href="/employeeHome" class="text-primary">
-        <i class="fas"></i>Back
-      </a>
-    </div>
+<body>
+
+    <div class="container">
+
+        <h4 class="mt-5 mb-5 text-primary">TravelBliss</h4>
+        <h5 class="mt-5 mb-5">Post Room </h5>
+        <h4 class="mb-5 d-inline">Welcome, {{session('profile.nickname')}} </h4>
+        <div class="float-right h6">
+            <a href="/employeeHome" class="text-primary">
+                <i class="fas"></i>Back
+            </a>
+        </div>
 
 
-    @if(count($errors)>0)
-      <div class="alert alert-danger p-3" role="alert">
-      @foreach($errors->all() as $err)
-      {{$err}} <br>
-	  	@endforeach
-      </div>
-	  	@endif
+        @if(count($errors)>0)
+            <div class="alert alert-danger p-3" role="alert">
+                @foreach($errors->all() as $err)
+                    {{ $err }} <br>
+                @endforeach
+            </div>
+        @endif
 
-      @if(session('msg'))
-      <div class="'alert alert-{{session('type')}} p-3" role="alert">
-      {{session('msg')}}
-      </div>
-	  	@endif
+        @if(session('msg'))
+            <div class="'alert alert-{{ session('type') }} p-3" role="alert">
+                {{ session('msg') }}
+            </div>
+        @endif
 
-    
-    <form method="POST">
-    @csrf
-      <div class="form-group">
-        <label for="post_title"> Post Title</label>
-        <input type="" class="form-control" id="postTitle" name="postTitle" value="{{old('postTitle')}}">
-      </div>
-      <div class="form-group">
-        <label for="room_name">Room Name</label>
-        <input class="form-control" id="roomName" name="roomName" value="{{old('roomName')}}">
-      </div>
-      <div class="form-group">
-        <label for="room_price">Room Price</label>
-        <input class="form-control" id="roomPrice" name="roomPrice" value="{{old('roomPrice')}}">
-      </div>
 
-      <div class="form-group">
-        <label for="room_type">Room Type</label>
-        <input class="form-control" id="roomType" name="roomType" value="{{old('roomType')}}">
-      </div>
-      
-      <!-- <div class="form-group">
+        <form method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="post_title"> Post Title</label>
+                <input type="" class="form-control" id="postTitle" name="postTitle"
+                    value="{{ old('postTitle') }}">
+            </div>
+            <div class="form-group">
+                <label for="room_name">Room Name</label>
+                <input class="form-control" id="roomName" name="roomName"
+                    value="{{ old('roomName') }}">
+            </div>
+            <div class="form-group">
+                <label for="room_price">Room Price</label>
+                <input class="form-control" id="roomPrice" name="roomPrice"
+                    value="{{ old('roomPrice') }}">
+            </div>
+
+            <!-- <div class="form-group">
+                <label for="room_type">Room Type</label>
+                <input class="form-control" id="roomType" name="roomType"
+                    value="{{ old('roomType') }}">
+            </div> -->
+
+            <div class="form-group">
         <label for="room_type">room type</label>
         <select class="form-control" name="roomType">
           <option selected value="single">Single</option>
           <option {{ old('role') == 'double' ? "selected" : "" }} value="double">Double</option>
         </select>
-      </div> -->
-      
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input class="form-control" id="description" name="description" value="{{old('description')}}">
       </div>
-      <div class="form-group">
-        <label for="tag"></label>
-        <input type="hidden" class="form-control" id="tag" name="tag" value='{{session("profile.username")}} '>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input class="form-control" id="description" name="description"
+                    value="{{ old('description') }}">
+            </div>
+
+            <div class="form-group">
+                <label for="room_type">Availability</label>
+                <select class="form-control" name="avail">
+                    <option selected value="available">Available</option>
+                    <option
+                        {{ old('role') == 'occupied' ? "selected" : "" }}
+                        value="occupied">Occupied</option>
+                        <option
+                        {{ old('role') == 'booked' ? "selected" : "" }}
+                        value="booked">Booked</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tag"></label>
+                <input type="hidden" class="form-control" id="tag" name="tag" value='{{ session("profile.login") }} '>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
 
 
-  </div>
+    </div>
 
 
 
@@ -92,13 +116,18 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
 
     <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     -->
-  </body>
+</body>
+
 </html>

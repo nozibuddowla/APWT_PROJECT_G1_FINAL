@@ -22,6 +22,9 @@ Route::get('/pdf', 'PDF\TestPDF@generate');
 
 Route::get('/micro','MicroController@microServe');
 
+Route::get('/login/github', 'UsersController@github');
+Route::get('/login/github/redirect', 'UsersController@githubRedirect');
+
 Route::group(['middleware'=>['profile']], function(){
     Route::get('/adminHome', 'UsersController@adminHome')->name('users.admin.home');
 
@@ -47,4 +50,6 @@ Route::group(['middleware'=>['profile']], function(){
     Route::get('/productEmployeeDelete/{id}', 'ProductsController@destroy')->name('products.employee.delete');
 
     Route::get('/productAdminSearch', 'ProductsController@search')->name('products.admin.search');
+
+    
 });

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Users;
 use Illuminate\Http\Request;
+use Socialite;
+use Auth;
+use Str;
 
 class UsersController extends Controller
 {
@@ -19,11 +22,11 @@ class UsersController extends Controller
     public function verifyLogin(Request $req)
     {
         $req->validate([
-            'username' => 'required',
+            'login' => 'required',
             'password'=> 'required'
         ]);
 
-        $user = Users::where('username', $req->username)
+        $user = Users::where('login', $req->login)
                     ->where('password', $req->password)
                     ->first();
         
@@ -163,5 +166,22 @@ class UsersController extends Controller
 
             echo json_encode($allUsers);    
         }
+    }
+
+    public function github(){
+        //user req to github
+        return Socialite::driver('github')->redirect();
+    }
+    public function githubRedirect(){
+        $user =  Socialite::driver('github')->user();
+        //dd($user);
+        //$check = "github";
+        session()->put('profile',$user);
+
+        //session()->put('checkGit',$check);
+
+        return redirect('/employeeHome');
+
+        
     }
 }
