@@ -68,7 +68,7 @@
                         <td>{{ $allUsers[$i]['name'] }}</td>
                         <td>{{ $allUsers[$i]['companyName'] }}</td>
                         <td>{{ $allUsers[$i]['contactno'] }}</td>
-                        <td>{{ $allUsers[$i]['username'] }}</td>
+                        <td>{{ $allUsers[$i]['login'] }}</td>
                         <td>{{ $allUsers[$i]['role'] }}</td>
                         <td colspan="2">
                             <a
