@@ -51,7 +51,7 @@
       </div>
       <div class="form-group">
         <label for="name">username</label>
-        <input type="" class="form-control" id="username" name="username" value="{{$username}}">
+        <input type="" class="form-control" id="username" name="login" value="{{$login}}">
       </div>
       <div class="form-group">
         <label for="contactno">contact no</label>
