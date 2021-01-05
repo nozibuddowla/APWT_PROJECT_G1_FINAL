@@ -76,7 +76,7 @@ class UsersController extends Controller
         $req->validate([
             'name' => 'required',
             'companyName' => 'required',
-            'username' => 'required|unique:users,username',
+            'login' => 'required|unique:users,login',
             'contactno' => 'required',
             'role' => 'required',
             'password'=> 'required'
@@ -85,7 +85,7 @@ class UsersController extends Controller
         $user = new Users();
         $user->name         = $req->name;
         $user->companyName  = $req->companyName;
-        $user->username     = $req->username;
+        $user->login     = $req->login;
         $user->password     = $req->password;
         $user->contactno    = $req->contactno;
         $user->role         = $req->role;
@@ -119,7 +119,7 @@ class UsersController extends Controller
         $req->validate([
             'name' => 'required',
             'companyName' => 'required',
-            'username' => 'required',
+            'login' => 'required',
             'contactno' => 'required',
             'role' => 'required',
             'password'=> 'required'
@@ -128,7 +128,7 @@ class UsersController extends Controller
         $user = Users::find($id);
         $user->name         = $req->name;
         $user->companyName  = $req->companyName;
-        $user->username     = $req->username;
+        $user->login     = $req->login;
         $user->password     = $req->password;
         $user->contactno    = $req->contactno;
         $user->role         = $req->role;
