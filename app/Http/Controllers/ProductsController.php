@@ -100,6 +100,17 @@ class ProductsController extends Controller
         return redirect()->route('products.employee.home');
     }
 
+    public function updateAvail(Request $req, $id)
+    {
+        $product = Products::find($id);
+        $product->avail       = "booked";
+        $product->save();
+
+        $req->session()->flash('msg','Availability updated successfully.');
+        $req->session()->flash('type','success');            
+        return redirect()->route('products.employee.home');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

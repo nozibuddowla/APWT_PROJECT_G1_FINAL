@@ -47,6 +47,9 @@ Route::group(['middleware'=>['profile']], function(){
     Route::get('/productEmployeeEdit/{id}', 'ProductsController@edit')->name('products.employee.edit');
     Route::post('/productEmployeeEdit/{id}', 'ProductsController@update')->name('products.employee.edit');
 
+    
+    Route::get('/productEmployeeEdit/{id}/avail', 'ProductsController@updateAvail')->name('products.employee.avail');
+
     Route::get('/productEmployeeDelete/{id}', 'ProductsController@destroy')->name('products.employee.delete');
 
     Route::get('/productAdminSearch', 'ProductsController@search')->name('products.admin.search');

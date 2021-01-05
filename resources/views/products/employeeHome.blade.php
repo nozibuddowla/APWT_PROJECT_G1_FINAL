@@ -100,7 +100,7 @@
             <a href="{{route('products.employee.delete', $allProducts[$i]['id'])}}"><i class="fas fa-trash-alt text-danger ml-3"></i></a>
            
             @if($allProducts[$i]['avail'] =='available')         
-            <a class="btn btn-success" href="{{route('products.employee.edit', $allProducts[$i]['id'])}}">Book Room</a>        
+            <a class="btn btn-success" href="{{route('products.employee.avail', $allProducts[$i]['id'])}}">Book Room</a>        
 @else
           
 @endif
