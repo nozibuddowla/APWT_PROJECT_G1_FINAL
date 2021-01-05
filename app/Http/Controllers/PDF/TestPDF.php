@@ -10,7 +10,7 @@ class TestPDF extends Controller
 {
     //
     public function generate(){
-        $ptag = session('profile.username');
+        $ptag = session('profile.login');
         $footer = session('profile.name');
         $data=Products::where('tag',$ptag)->get();
         $fileName = 'report.pdf';
